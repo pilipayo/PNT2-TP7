@@ -102,8 +102,6 @@
         nombreMaxLength: 15,
         edadMin: 18,
         edadMax: 120,
-        url: "https://62966e8f810c00c1cb75b66a.mockapi.io/ingresos",
-        ingresos: []
         
       }
     },
@@ -111,29 +109,20 @@
       getInicialData() {
         return {
           nombre: '',
-          apellido: '',
           edad: '',
           email: ''
         }
       },
       enviar() {
-        this.postIngreso()
-        this.formData = this.getInicialData() 
-        this.formState._reset()  
-      },
-      async postIngreso() {
-        let ingresoNuevo = {
+        console.log(this.formData);
+        var ingreso = {
           nombre: this.formData.nombre,
           edad: this.formData.edad,
-          email: this.formData.email
-        }
-        try {
-          let { data: ingreso } = await this.axios.post(this.url, ingresoNuevo, {'content-type' : 'application/json'})
-          this.ingresos.push(ingreso)
-        }
-        catch(error) {
-          console.error('Hubo un error en el ingreso', error.message)
-        }
+          email: this.formData.email,
+         }
+        this.$store.dispatch("postIngresos", ingreso );
+        this.formData = this.getInicialData()
+        this.formState._reset() 
     },
     },
     computed: {

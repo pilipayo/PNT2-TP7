@@ -11,9 +11,11 @@ Vue.config.productionTip = false
 import './form'
 import { router } from './router'
 import './axios'
+import store from './store'
 
 new Vue({
   router,
+  store, 
   render: h => h(App),
 }).$mount('#app')
 

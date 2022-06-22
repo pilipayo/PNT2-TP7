@@ -41,27 +41,20 @@
     name: 'src-components-vista',
     props: [],
     beforeMount() {
-    this.getIngresos();
+    this.$store.dispatch("getIngresos");
   },
     data () {
       return {
-        url: "https://62966e8f810c00c1cb75b66a.mockapi.io/ingresos",
-        ingresos: []
+       
       }
     },
     methods: {
-      async getIngresos() {
-        try {
-          let { data: ingresos } = await this.axios(this.url)
-          console.log('AXIOS GET ingresos', ingresos)
-          this.ingresos = ingresos
-        }
-        catch(error) {
-          console.error('Hubo un error en getIngresos()', error.message)
-        }
-      },
+      
     },
     computed: {
+      ingresos() {
+      return this.$store.state.ingresos;
+    }
     }
 }
 </script>

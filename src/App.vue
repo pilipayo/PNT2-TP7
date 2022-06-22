@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-3">
    <div class="jumbotron">
-     <h1> FORMULARIO </h1>
+     <h1> FORMULARIO Vuex</h1>
      <hr>
       <NavBar/>
      <router-view></router-view>
